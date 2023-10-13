@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class BD {
             ResultSet resultSet = statement.executeQuery("SELECT * FROM register");
 
             // Sentencia INSERT
-            String sql = "INSERT INTO register (id , name, ally, status) VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO register (id , name, ally, status, creation_date, update_date) VALUES (?, ?, ?, ?, ?, ?)";
 
             // Preparar la sentencia
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -30,7 +31,8 @@ public class BD {
             preparedStatement.setString(2, name);
             preparedStatement.setString(3, ally);
             preparedStatement.setString(4, status);
-
+            preparedStatement.setString(5, String.valueOf(LocalDateTime.now()));
+            preparedStatement.setString(6, "");
             // Ejecutar la sentencia
             int files = preparedStatement.executeUpdate();
 
@@ -62,11 +64,12 @@ public class BD {
         Connection connection2 = DriverManager.getConnection(url2, username2, pass2);
 
         Statement statement2 = connection2.createStatement();
-        String consulta = "UPDATE register SET status = ? WHERE id = ?";
+        String consulta = "UPDATE register SET status = ?, update_date = ? WHERE id = ?";
 
         PreparedStatement preparedStatement = connection2.prepareStatement(consulta);
         preparedStatement.setString(1, status);
-        preparedStatement.setString(2, id);
+        preparedStatement.setString(2, String.valueOf(LocalDateTime.now()));
+        preparedStatement.setString(3, id);
 
         int filasActualizadas = preparedStatement.executeUpdate();
         if (filasActualizadas > 0) {

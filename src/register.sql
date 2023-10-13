@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 13-10-2023 a las 14:46:05
+-- Tiempo de generación: 13-10-2023 a las 21:15:15
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.0.26
 
@@ -33,6 +33,8 @@ CREATE TABLE IF NOT EXISTS `register` (
   `name` varchar(30) NOT NULL,
   `ally` varchar(30) NOT NULL,
   `status` varchar(30) NOT NULL,
+  `creation_date` varchar(30) NOT NULL,
+  `update_date` varchar(30) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -40,10 +42,11 @@ CREATE TABLE IF NOT EXISTS `register` (
 -- Volcado de datos para la tabla `register`
 --
 
-INSERT INTO `register` (`id`, `name`, `ally`, `status`) VALUES
-('12345', 'Johan', 'Meli', 'Inactivo'),
-('88c18', 'Alexis', 'Amazon', 'Activo'),
-('2c47d', 'Adriana', 'Meli', 'Activo');
+INSERT INTO `register` (`id`, `name`, `ally`, `status`, `creation_date`, `update_date`) VALUES
+('12345', 'Johan', 'Meli', 'Inactivo', '', ''),
+('88c18', 'Alexis', 'Amazon', 'Activo', '', ''),
+('2c47d', 'Adriana', 'Meli', 'Activo', '', ''),
+('0e163', 'Adriana', 'Meli', 'Inactivo', '2023-10-13T16:13:26.796810300', '2023-10-13T16:14:42.289181800');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
